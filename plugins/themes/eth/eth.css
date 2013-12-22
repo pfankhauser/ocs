@@ -113,10 +113,6 @@ input.defaultButton {
 	color: white;
 }
 
-input.button {
-	background-color: #EEEEFF;
-}
-
 input {
 	border: 1px solid #006699;
 }
