@@ -11,6 +11,14 @@
 {assign var="pageTitle" value="schedConf.registration"}
 {include file="common/header.tpl"}
 
+
+{if $schedConf->getLocalizedSetting('registrationAdditionalInformation')}
+<div id="registrationInfo">
+		<p>{$schedConf->getLocalizedSetting('registrationAdditionalInformation')|nl2br}<br /></p>
+<div id="registrationInfo">
+{/if}
+
+
 <form action="{url op="registration"}" method="post">
 <div id="registrationType">
 <table class="listing" width="100%">
@@ -18,7 +26,7 @@
 		<td colspan="2" class="headseparator">&nbsp;</td>
 	</tr>
 	<tr valign="top" class="heading">
-		<td width="60%">{translate key="schedConf.registration.type"}</td>
+		<td width="40%">{translate key="schedConf.registration.type"}</td>
 		<td width="60%">{translate key="schedConf.registration.cost"}</td>
 	</tr>
 	<tr>
@@ -70,38 +78,26 @@
 	</tr>
 </table>
 </div>
-{if $currentSchedConf->getSetting('registrationName')}
-
-<div id="registrationContact">
-<h3>{translate key="manager.registrationPolicies.registrationContact"}</h3>
-
-<table class="data" width="100%">
-	<tr valign="top">
-		<td width="20%" class="label">{translate key="user.name"}</td>
-		<td width="80%" class="value">{$currentSchedConf->getSetting('registrationName')|escape}</td>
-	</tr>
-	{if $currentSchedConf->getSetting('registrationEmail')}<tr valign="top">
-		<td class="label">{translate key="about.contact.email"}</td>
-		<td class="value">{mailto address=$currentSchedConf->getSetting('registrationEmail')|escape encode="hex"}</td>
-	</tr>{/if}
-	{if $currentSchedConf->getSetting('registrationPhone')}<tr valign="top">
-		<td class="label">{translate key="about.contact.phone"}</td>
-		<td class="value">{$currentSchedConf->getSetting('registrationPhone')|escape}</td>
-	</tr>{/if}
-	{if $currentSchedConf->getSetting('registrationFax')}<tr valign="top">
-		<td class="label">{translate key="about.contact.fax"}</td>
-		<td class="value">{$currentSchedConf->getSetting('registrationFax')|escape}</td>
-	</tr>{/if}
-	{if $currentSchedConf->getSetting('registrationMailingAddress')}<tr valign="top">
-		<td class="label">{translate key="common.mailingAddress"}</td>
-		<td class="value">{$currentSchedConf->getSetting('registrationMailingAddress')|nl2br}</td>
-	</tr>{/if}
-</table>
-</div>
-{/if}{* if displaying reg manager info *}
 
 <p><input type="submit" value="{translate key="schedConf.registration.register"}" {if !$registrationMethodAvailable}disabled="disabled" class="button" {else}class="button defaultButton" {/if}/></p>
 
 </form>
+
+{if $currentSchedConf->getSetting('registrationName')}
+<div id="registrationContact">
+<h3>{translate key="manager.registrationPolicies.registrationContact"}</h3>
+<p>
+		<strong>{$currentSchedConf->getSetting('registrationName')|escape}</strong><br />
+	{if $currentSchedConf->getSetting('registrationMailingAddress')}
+		{$currentSchedConf->getSetting('registrationMailingAddress')|nl2br}<br />
+	{/if}
+	{if $currentSchedConf->getSetting('registrationPhone')}
+		{translate key="user.phone"}: {$currentSchedConf->getSetting('registrationPhone')|escape}<br />
+	{/if}
+	{if $currentSchedConf->getSetting('registrationEmail')}
+		{translate key="user.email"}: {mailto address=$currentSchedConf->getSetting('registrationEmail')|escape encode="hex"}
+	{/if}
+</p>
+{/if}{* if displaying reg manager info *}
 
 {include file="common/footer.tpl"}
