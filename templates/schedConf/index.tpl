@@ -26,6 +26,15 @@
 
 <div>{$schedConf->getLocalizedSetting("introduction")|nl2br}</div>
 
+{if $homepageImage}
+<div id="homepageImage"><img src="{$publicFilesDir}/{$homepageImage.uploadName|escape}" width="{$homepageImage.width}" height="{$homepageImage.height}" {if $homepageImageAltText != ''}alt="{$homepageImageAltText|escape}"{else}alt="{translate key="common.conferenceHomepageImage.altText"}"{/if} /></div>
+{/if}
+
+<h2>Important Dates</h2>
+<p>Abstract submission: {$schedConf->getSetting('submissionsOpenDate')|date_format:$dateFormatLong} &ndash; {$schedConf->getSetting('submissionsCloseDate')|date_format:$dateFormatLong}<br />
+Notification of acceptance: {$schedConf->getSetting('regAuthorOpenDate')|date_format:$dateFormatLong}<br />
+Registration: {$schedConf->getSetting('regAuthorOpenDate')|date_format:$dateFormatLong} &ndash; {$schedConf->getSetting('regAuthorCloseDate')|date_format:$dateFormatLong}</p>
+
 {if $enableAnnouncementsHomepage}
 	{* Display announcements *}
 	<div id="announcementsHome">
@@ -41,9 +50,12 @@
 
 <br />
 
-{if $homepageImage}
-<div id="homepageImage"><img src="{$publicFilesDir}/{$homepageImage.uploadName|escape}" width="{$homepageImage.width}" height="{$homepageImage.height}" {if $homepageImageAltText != ''}alt="{$homepageImageAltText|escape}"{else}alt="{translate key="common.conferenceHomepageImage.altText"}"{/if} /></div>
-{/if}
+{foreach key=key from=$currentConference->getLocalizedSetting('customAboutItems') item=customAboutItem name=customAboutItems}
+	{if !empty($customAboutItem.title)}
+		<h2>{$customAboutItem.title|escape}</h2>
+		<p>{$customAboutItem.content|nl2br}</p>
+	{/if}
+{/foreach}
 
 {$additionalHomeContent}
 
