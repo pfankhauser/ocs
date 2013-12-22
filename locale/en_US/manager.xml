@@ -13,12 +13,12 @@
   -->
 
 <locale name="en_US" full_name = "English">
-	<message key="manager.accommodation">Accommodation</message>
+	<message key="manager.accommodation">Venue</message>
 	<message key="manager.accommodation.form.accommodationFiles">Files</message>
 	<message key="manager.accommodation.form.accommodationFiles.description">Use this section to upload one or more files for registrants and potential registrants, such as maps, forms, etc.</message>
-	<message key="manager.accommodation.form.accommodationText">Accommodation Description</message>
-	<message key="manager.accommodation.form.accommodationText.description">Enter text describing conference accommodations in the field below.</message>
-	<message key="manager.accommodation.form.description">Enter information about accommodation, transportation, and other related logistics here. Several files including information like directions and forms may also be uploaded.</message>
+	<message key="manager.accommodation.form.accommodationText">Venue Description</message>
+	<message key="manager.accommodation.form.accommodationText.description">Enter text describing conference venue in the field below.</message>
+	<message key="manager.accommodation.form.description">Enter information about venue, accommodation, transportation, and other related logistics here. Several files including information like directions and forms may also be uploaded.</message>
 	<message key="manager.announcements.form.schedConfId">Scheduled Conference</message>
 	<message key="manager.announcements.schedConf">Scheduled Conference</message>
 	<message key="manager.conferenceEventLog">Event Log</message>
@@ -640,7 +640,7 @@
 	<message key="manager.timeline.openRegReviewer">Reviewer registration opened</message>
 	<message key="manager.timeline.overrideDates">Override error message(s)</message>
 	<message key="manager.timeline.postDate">Post Date</message>
-	<message key="manager.timeline.postAccommodation">Include Accommodation in Conference Information listing</message>
+	<message key="manager.timeline.postAccommodation">Include Venue in Conference Information listing</message>
 	<message key="manager.timeline.postAbstracts">Accepted abstracts</message>
 	<message key="manager.timeline.postCFP">Include CFP in Conference Information listing</message>
 	<message key="manager.timeline.postOverview">Include Overview in Conference Information listing</message>
