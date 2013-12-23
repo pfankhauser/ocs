@@ -10,19 +10,13 @@
  *}
 {include file="paper/header.tpl"}
 
-	<div id="topBar">
-		<div id="paperFontSize">
-			{translate key="paper.fontSize"}:&nbsp;
-			<div id="sizer"></div>
-		</div>
-	</div>
 {if $galley}
 	{if $galley->isHTMLGalley()}
 		{$galley->getHTMLContents()}
 	{/if}
 {else}
 
-	<div id="title">{$paper->getLocalizedTitle()|strip_unsafe_html}</div>
+	<div id="title"><strong>{$paper->getLocalizedTitle()|strip_unsafe_html}</strong></div>
 	<div id="author"><em>{$paper->getAuthorString()|escape}</em></div>
 	<br />
 
@@ -36,7 +30,6 @@
 			{translate key="common.date"}:&nbsp;{$paper->getStartTime()|date_format:$datetimeFormatShort}&nbsp;&ndash;&nbsp;{$paper->getEndTime()|date_format:$timeFormat}<br/>
 		{/if}
 	{/if}{* $schedConfPostSchedule *}
-	{translate key="submission.lastModified"}:&nbsp;{$paper->getLastModified()|date_format:$dateFormatShort}<br/>
 	</blockquote>
 
 	{if $paper->getLocalizedAbstract()}

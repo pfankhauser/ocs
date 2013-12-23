@@ -61,40 +61,9 @@
 
 <div id="main">
 
-<h2>{$siteTitle|escape},&nbsp;{$schedConf->getFullTitle()|escape}</h2>
+<h2>{$schedConf->getFullTitle()|escape}</h2>
 
-<div id="navbar">
-	<ul class="menu">
-		<li><a href="{url conference="index" schedConf="index" op="index"}" target="_parent">{translate key="navigation.home"}</a></li>
-		<li><a href="{url page="about"}" target="_parent">{translate key="navigation.about"}</a></li>
-
-		{if $isUserLoggedIn}
-			<li><a href="{url conference="index" page="user"}" target="_parent">{translate key="navigation.userHome"}</a></li>
-		{else}
-			<li><a href="{url page="login"}" target="_parent">{translate key="navigation.login"}</a></li>
-			<li><a href="{url page="user" op="account"}" target="_parent">{translate key="navigation.account"}</a></li>
-		{/if}{* $isUserLoggedIn *}
-
-		<li><a href="{url page="search"}" target="_parent">{translate key="navigation.search"}</a></li>
-
-		{if $currentConference}
-			{if $currentSchedConfsExist}<li><a href="{url schedConf="index" page="schedConfs" op="current"}" target="_parent">{translate key="navigation.current"}</a></li>{/if}
-			{if $archivedSchedConfsExist}<li><a href="{url schedConf="index" page="schedConfs" op="archive"}" target="_parent">{translate key="navigation.archive"}</a></li>{/if}
-
-			{if $enableAnnouncements}
-				<li><a href="{url page="announcement"}" target="_parent">{translate key="announcement.announcements"}</a></li>
-			{/if}{* $enableAnnouncements *}
-
-			{call_hook name="Templates::Common::Header::Navbar::CurrentConference"}
-		{/if}{* $currentConference *}
-
-		{foreach from=$navMenuItems item=navItem}
-			{if $navItem.url != '' && $navItem.name != ''}
-				<li><a href="{if $navItem.isAbsolute}{$navItem.url|escape}{else}{$navItem.url|escape}{/if}" target="_parent">{if $navItem.isLiteral}{$navItem.name|escape}{else}{translate key=$navItem.name}{/if}</a></li>
-			{/if}
-		{/foreach}
-	</ul>
-</div>
+{include file="common/navbar.tpl"}
 
 <div id="breadcrumb">
 	<a href="{url page="index"}" target="_parent">{translate key="navigation.home"}</a> &gt;
