@@ -95,7 +95,7 @@
 		{else}
 			<li>
 				<a href="{url page="paper" op="view" path=$item->getBestPaperId()}">{$item->getLocalizedTitle()|escape}</a>
-				{if $showAuthors}<br />{$item->getAuthorString()|escape}{/if}
+				{if $showAuthors}<br /><em>{$item->getAuthorString()|escape}</em>{/if}
 			</li>
 		{/if}
 		{assign var=lastStartTime value=$startTime}
