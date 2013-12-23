@@ -57,8 +57,6 @@
 {/if}
 
 <div id="schedule">
-<h3>{translate key="schedConf.schedule"}</h3>
-
 {assign var=lastStartTime value=0}
 {assign var=needsUlClose value=0}
 {foreach from=$itemsByTime item=list key=startTime}
@@ -69,32 +67,34 @@
 				</ul>
 				{assign var=needsUlClose value=0}
 			{/if}
-			<h3>{$startTime|date_format:$dateFormatShort}</h3>
+			<h2>{$startTime|date_format:$dateFormatTrunc}</h2>
 		{/if}
 		{if $lastStartTime|date_format:$datetimeFormatShort != $startTime|date_format:$datetimeFormatShort}
 			{if $needsUlClose}
 				</ul>
 				{assign var=needsUlClose value=0}
 			{/if}
-			<h4>{$startTime|date_format:$timeFormat} {if $showEndTime}- {$endTime|date_format:$timeFormat}{/if}</h4>
-			<ul>
-			{assign var=needsUlClose value=1}
-		{/if}
-		{if (get_class($item) == 'SpecialEvent' || get_class($item) == 'specialevent')}
-			<li>
-				<strong>{$item->getSpecialEventName()|escape}</strong>{if $item->getSpecialEventDescription() != ''}:&nbsp;{$item->getSpecialEventDescription()}{/if}
-			</li>
-		{else}
-			<li>
-				{if $showAuthors} {$item->getAuthorString()|escape}, {/if}<a class="action" href="{url page="paper" op="view" path=$item->getBestPaperId()}">{$item->getLocalizedTitle()|escape}</a>
+			<h3>{$startTime|date_format:$timeFormat}{if $showEndTime} &ndash; {$endTime|date_format:$timeFormat}{/if}
 				{assign var=roomId value=$item->getRoomId()}
 				{if $roomId && $allRooms[$roomId]}
 					{assign var=room value=$allRooms[$roomId]}
 					{assign var=buildingId value=$room->getBuildingId()}
 					{assign var=building value=$buildingsAndRooms.$buildingId.building}
 					{if $building && $buildingsAndRooms|@count != 1}<br/>{translate key="manager.scheduler.building"}:&nbsp;{$building->getBuildingName()|escape}{/if}
-					<br/>{translate key="manager.scheduler.room"}:&nbsp;{$room->getRoomName()}
+					, {translate key="manager.scheduler.room"}:&nbsp;{$room->getRoomName()}
 				{/if}
+			</h3>
+			<ul>
+			{assign var=needsUlClose value=1}
+		{/if}
+		{if (get_class($item) == 'SpecialEvent' || get_class($item) == 'specialevent')}
+			<li>
+				<strong>{$item->getSpecialEventName()|escape}</strong>{if $item->getSpecialEventDescription() != ''}<br />{$item->getSpecialEventDescription()}{/if}
+			</li>
+		{else}
+			<li>
+				<a class="action" href="{url page="paper" op="view" path=$item->getBestPaperId()}">{$item->getLocalizedTitle()|escape}</a>
+				{if $showAuthors}<br />{$item->getAuthorString()|escape}{/if}
 			</li>
 		{/if}
 		{assign var=lastStartTime value=$startTime}
