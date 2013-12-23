@@ -114,7 +114,7 @@ input.defaultButton {
 }
 
 input {
-	border: 1px solid #006699;
+	border: 1px solid #133a7b;
 }
 
 input.textField,
@@ -125,5 +125,22 @@ input.uploadField {
 }
 
 div.separator {
-	border-bottom: 2px solid #006699;
+	border-bottom: 2px solid #133a7b;
+}
+
+/**
+ * Schedule
+ */
+ 
+#schedule p.buildingInformation {
+	margin-top: -0.2em;
+	margin-bottom: 0.5em;
+}
+
+#schedule div.separator {
+	margin-top: 3em;
+}
+
+#schedule li {
+	margin-top: 0.5em;
 }
