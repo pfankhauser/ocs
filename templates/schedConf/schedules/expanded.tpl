@@ -65,6 +65,7 @@
 		{if !$lastStartTime || $lastStartTime|date_format:$dateFormatShort != $startTime|date_format:$dateFormatShort}
 			{if $needsUlClose}
 				</ul>
+				<div class="separator"></div>
 				{assign var=needsUlClose value=0}
 			{/if}
 			<h2>{$startTime|date_format:$dateFormatTrunc}</h2>
@@ -74,16 +75,16 @@
 				</ul>
 				{assign var=needsUlClose value=0}
 			{/if}
-			<h3>{$startTime|date_format:$timeFormat}{if $showEndTime} &ndash; {$endTime|date_format:$timeFormat}{/if}
+			<h3>{$startTime|date_format:$timeFormat}{if $showEndTime} &ndash; {$endTime|date_format:$timeFormat}{/if}</h3>
+			{if method_exists($item, 'getRoomId')}
 				{assign var=roomId value=$item->getRoomId()}
 				{if $roomId && $allRooms[$roomId]}
 					{assign var=room value=$allRooms[$roomId]}
 					{assign var=buildingId value=$room->getBuildingId()}
 					{assign var=building value=$buildingsAndRooms.$buildingId.building}
-					{if $building && $buildingsAndRooms|@count != 1}<br/>{translate key="manager.scheduler.building"}:&nbsp;{$building->getBuildingName()|escape}{/if}
-					, {translate key="manager.scheduler.room"}:&nbsp;{$room->getRoomName()}
+					{if $building && $buildingsAndRooms|@count != 1}<p class="buildingInformation">{translate key="manager.scheduler.building"}:&nbsp;{$building->getBuildingName()|escape}{/if}, {translate key="manager.scheduler.room"}:&nbsp;{$room->getRoomName()}</p>
 				{/if}
-			</h3>
+			{/if}
 			<ul>
 			{assign var=needsUlClose value=1}
 		{/if}
@@ -93,7 +94,7 @@
 			</li>
 		{else}
 			<li>
-				<a class="action" href="{url page="paper" op="view" path=$item->getBestPaperId()}">{$item->getLocalizedTitle()|escape}</a>
+				<a href="{url page="paper" op="view" path=$item->getBestPaperId()}">{$item->getLocalizedTitle()|escape}</a>
 				{if $showAuthors}<br />{$item->getAuthorString()|escape}{/if}
 			</li>
 		{/if}
