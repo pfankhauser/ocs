@@ -1,0 +1,23 @@
+================================
+=== OCS List of Attendees Plugin
+=== Version: $Id$
+=== Author: Péter Fankhauser <pfankhauser@ethz.ch>
+================================
+
+About
+-----
+
+
+License
+-------
+This plugin is licensed under the GNU General Public License v2. See the file COPYING for the complete terms of this license.
+
+System Requirements
+-------------------
+Same requirements as the OCS 2.3 core.
+
+Installation
+------------
+
+Configuration
+------------

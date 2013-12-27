@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2013 Péter Fankhauser
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  *
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.listOfAttendees.displayName">List of Attendees Plugin</message>
+	<message key="plugins.generic.listOfAttendees.description">This plugin allows to show a list of attendees of a conference.</message>
+	<message key="plugins.generic.listOfAttendees.disabled">The List of Attendees Plugin has been disabled.</message>
+	<message key="plugins.generic.listOfAttendees.enabled">The List of Attendees Plugin has been enabled.</message>
+	<message key="plugins.generic.listOfAttendees.settings">Settings</message>
+</locale>
