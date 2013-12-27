@@ -104,7 +104,6 @@ class ListOfAttendeesPlugin extends GenericPlugin {
 	 * Declare the handler function to process the actual page PATH
 	 */
 	function callbackHandleContent($hookName, $args) {
-		$templateMgr =& TemplateManager::getManager();
 		$page =& $args[0];
 
 		if ( $page == 'attendees' ) {

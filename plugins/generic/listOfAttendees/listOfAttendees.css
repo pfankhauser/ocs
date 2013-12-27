@@ -1,0 +1,11 @@
+ul#listOfAttendees {
+	list-style: none;
+	padding-left: 0;
+	columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+ul#listOfAttendees li {
+	margin-bottom: 1em;
+}

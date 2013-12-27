@@ -26,6 +26,8 @@ class ListOfAttendeesHandler extends Handler {
 		$schedConf =& Request::getSchedConf();
 		$schedConfId = ($schedConf ? $schedConf->getId() : $conference->getId());
 		
+		$templateMgr->addStyleSheet(Request::getBaseUrl().'/plugins/generic/listOfAttendees/listOfAttendees.css');
+		
 		$templateMgr->assign('pageHierarchy', array(
 			array(Request::url(null, 'index', 'index'), $conference->getConferenceTitle(), true),
 			array(Request::url(null, null, 'index'), $schedConf->getSchedConfTitle(), true)));
