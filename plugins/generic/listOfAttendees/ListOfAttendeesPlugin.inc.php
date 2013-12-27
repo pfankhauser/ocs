@@ -105,11 +105,9 @@ class ListOfAttendeesPlugin extends GenericPlugin {
 	 */
 	function callbackHandleContent($hookName, $args) {
 		$templateMgr =& TemplateManager::getManager();
-
 		$page =& $args[0];
-		$op =& $args[1];
 
-		if ( $page == 'pages' ) {
+		if ( $page == 'attendees' ) {
 			define('HANDLER_CLASS', 'ListOfAttendeesHandler');
 			$this->import('ListOfAttendeesHandler');
 			return true;

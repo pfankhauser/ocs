@@ -16,4 +16,5 @@
 	<message key="plugins.generic.listOfAttendees.description">This plugin allows to show a list of attendees of a conference.</message>
 	<message key="plugins.generic.listOfAttendees.disabled">The List of Attendees Plugin has been disabled.</message>
 	<message key="plugins.generic.listOfAttendees.enabled">The List of Attendees Plugin has been enabled.</message>
+	<message key="plugins.generic.listOfAttendees.pageTitle">Attendees</message>
 </locale>

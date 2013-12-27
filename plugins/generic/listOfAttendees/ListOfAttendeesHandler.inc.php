@@ -16,32 +16,28 @@
 import('handler.Handler');
 
 class ListOfAttendeesHandler extends Handler {
-	function index( $args ) {
-		Request::redirect(null, null, null, 'view', Request::getRequestedOp());
-	}
-	
-	function view ($args) {
-		if (count($args) > 0 ) {
-			AppLocale::requireComponents(array(LOCALE_COMPONENT_PKP_COMMON, LOCALE_COMPONENT_APPLICATION_COMMON));			
-			$conference =& Request::getConference();
-			$conferenceId = $conference->getId();
-			$path = $args[0];
+	function index() {
+		AppLocale::requireComponents(array(LOCALE_COMPONENT_PKP_COMMON, LOCALE_COMPONENT_APPLICATION_COMMON));			
 
-			$listOfAttendeesPlugin =& PluginRegistry::getPlugin('generic', 'ListOfAttendeesPlugin');
-			$templateMgr =& TemplateManager::getManager();
+		$conference =& Request::getConference();
+		$schedConf =& Request::getSchedConf();
+		$schedConfId = ($schedConf ? $schedConf->getId() : $conference->getId());
 
-			$listOfAttendeesDAO =& DAORegistry::getDAO('ListOfAttendeesDAO');
-			$listOfAttendees = $listOfAttendeesDAO->getListOfAttendees($conferenceId);
+		$listOfAttendeesPlugin =& PluginRegistry::getPlugin('generic', 'ListOfAttendeesPlugin');
+		$templateMgr =& TemplateManager::getManager();
 
-			if ( !$listOfAttendees ) {
-				Request::redirect(null, null, 'index');
-			}
-			
-			// and assign the template vars needed
-			$templateMgr->assign('title', 'TITEL');
-			$templateMgr->assign('content',  'INHALT');
-			$templateMgr->display($listOfAttendeesPlugin->getTemplatePath().'content.tpl');
-		}
+		$templateMgr->assign('title', __('plugins.generic.listOfAttendees.pageTitle'));
+
+		$listOfAttendeesDAO =& DAORegistry::getDAO('ListOfAttendeesDAO');
+		$attendees =& $listOfAttendeesDAO->getListOfAttendees($schedConfId);
+		$attendees =& $attendees->toArray();
+		$templateMgr->assign_by_ref('attendees',  $attendees);
+
+		$countryDao =& DAORegistry::getDAO('CountryDAO');
+		$countries =& $countryDao->getCountries();
+		$templateMgr->assign_by_ref('countries', $countries);
+		
+		$templateMgr->display($listOfAttendeesPlugin->getTemplatePath().'index.tpl');
 	}
 }
 
