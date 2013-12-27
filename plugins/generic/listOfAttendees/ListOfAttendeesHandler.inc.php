@@ -16,15 +16,19 @@
 import('handler.Handler');
 
 class ListOfAttendeesHandler extends Handler {
-	function index() {
-		AppLocale::requireComponents(array(LOCALE_COMPONENT_PKP_COMMON, LOCALE_COMPONENT_APPLICATION_COMMON));			
 
+	function index() {
+		AppLocale::requireComponents(array(LOCALE_COMPONENT_PKP_COMMON, LOCALE_COMPONENT_APPLICATION_COMMON));		
+
+		$templateMgr =& TemplateManager::getManager();
+		
 		$conference =& Request::getConference();
 		$schedConf =& Request::getSchedConf();
 		$schedConfId = ($schedConf ? $schedConf->getId() : $conference->getId());
-
-		$listOfAttendeesPlugin =& PluginRegistry::getPlugin('generic', 'ListOfAttendeesPlugin');
-		$templateMgr =& TemplateManager::getManager();
+		
+		$templateMgr->assign('pageHierarchy', array(
+			array(Request::url(null, 'index', 'index'), $conference->getConferenceTitle(), true),
+			array(Request::url(null, null, 'index'), $schedConf->getSchedConfTitle(), true)));
 
 		$templateMgr->assign('title', __('plugins.generic.listOfAttendees.pageTitle'));
 
@@ -37,8 +41,14 @@ class ListOfAttendeesHandler extends Handler {
 		$countries =& $countryDao->getCountries();
 		$templateMgr->assign_by_ref('countries', $countries);
 		
+		$listOfAttendeesPlugin =& PluginRegistry::getPlugin('generic', 'ListOfAttendeesPlugin');
 		$templateMgr->display($listOfAttendeesPlugin->getTemplatePath().'index.tpl');
+		
+		
+
+
 	}
+	
 }
 
 ?>
