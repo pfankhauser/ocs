@@ -13,8 +13,9 @@
  
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.listOfAttendees.displayName">List of Attendees Plugin</message>
-	<message key="plugins.generic.listOfAttendees.description">This plugin allows to show a list of attendees of a conference.</message>
+	<message key="plugins.generic.listOfAttendees.description"><![CDATA[This plugin allows to show a list of attendees of a conference. Add the corresponding navigation bar item by adding a new navbar item in <em>Website Management > Website Headers, Footers, Lists and Navigation Bar > 3.4 Navigation Bar</em> with label name <em>plugins.generic.listOfAttendees.navigationTitle</em> and URL <em>/ocs/index.php/dw2014/dw2014/attendees</em> (adapt the URL to your installation setup).]]></message>
 	<message key="plugins.generic.listOfAttendees.disabled">The List of Attendees Plugin has been disabled.</message>
 	<message key="plugins.generic.listOfAttendees.enabled">The List of Attendees Plugin has been enabled.</message>
 	<message key="plugins.generic.listOfAttendees.pageTitle">Attendees</message>
+	<message key="plugins.generic.listOfAttendees.navigationTitle">Attendees</message>
 </locale>

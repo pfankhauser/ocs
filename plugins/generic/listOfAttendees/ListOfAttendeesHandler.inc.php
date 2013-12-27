@@ -43,10 +43,6 @@ class ListOfAttendeesHandler extends Handler {
 		
 		$listOfAttendeesPlugin =& PluginRegistry::getPlugin('generic', 'ListOfAttendeesPlugin');
 		$templateMgr->display($listOfAttendeesPlugin->getTemplatePath().'index.tpl');
-		
-		
-
-
 	}
 	
 }
