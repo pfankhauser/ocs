@@ -15,18 +15,6 @@ import('db.DAO');
 
 class ListOfAttendeesDAO extends DAO {
 
-/*
-	function &getListOfAttendees($conferenceId) {
-		$result =& $this->retrieve(
-			'SELECT * FROM users WHERE user_id IN (SELECT user_id FROM registrations WHERE sched_conf_id = ?)', $conferenceId
-		);
-
-		$returner = new DAOResultFactory($result, $this, '_returnUserFromRow');
-		
-		return $returner;
-	}
-	
-*/
 	/**
 	 * Retrieve a list of users who are registered the specified sched conf.
 	 * @param $schedConfId int

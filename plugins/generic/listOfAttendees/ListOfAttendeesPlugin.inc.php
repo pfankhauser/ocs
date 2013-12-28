@@ -92,13 +92,6 @@ class ListOfAttendeesPlugin extends GenericPlugin {
 		}
 		return $verbs;
 	}
-
-	/**
-	 * Get the filename of the ADODB schema for this plugin.
-	 */
-	function getInstallSchemaFile() {
-		return $this->getPluginPath() . '/' . 'schema.xml';
-	}
 	
 	/**
 	 * Declare the handler function to process the actual page PATH
