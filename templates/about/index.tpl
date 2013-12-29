@@ -59,7 +59,6 @@
 <div id="other">
 <h3>{translate key="about.other"}</h3>
 <ul class="plain">
-	<li>&#187; <a href="{url op="siteMap"}">{translate key="about.siteMap"}</a></li>
 	<li>&#187; <a href="{url op="aboutThisPublishingSystem"}">{translate key="about.aboutThisPublishingSystem"}</a></li>
 	{if $publicStatisticsEnabled}<li>&#187; <a href="{url op="statistics"}">{translate key="about.statistics"}</a></li>{/if}
 	{call_hook name="Templates::About::Index::Other"}
