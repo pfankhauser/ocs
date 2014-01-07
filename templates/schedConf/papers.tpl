@@ -44,7 +44,10 @@
 				<td align="right" width="25%">
 					{if $mayViewPapers && $paper->getStatus() == $smarty.const.STATUS_PUBLISHED}
 						{foreach from=$paper->getGalleys() item=galley name=galleyList}
-							<a href="{url page="paper" op="view" path=$paper->getBestPaperId($currentConference)|to_array:$galley->getId()}" class="file">{$galley->getGalleyLabel()|escape}</a>
+							<a href="{url page="paper" op="view" path=$paper->getBestPaperId($currentConference)|to_array:$galley->getId()}" class="file">{translate key="search.abstract"}</a>
+							{foreach from=$paper->getSuppFiles() item=suppFile key=key}
+								/ <a href="{url page="paper" op="downloadSuppFile" path=$paper->getPaperId()|to_array:$suppFile->getBestSuppFileId($currentConference)}" class="action">{translate key="paper.suppFileAbbrev"}</a>
+							{/foreach}
 						{/foreach}
 					{/if}
 				</td>

@@ -167,6 +167,7 @@
 	<message key="paper.conferenceTrack">Conference Track</message>
 	<message key="paper.file">File</message>
 	<message key="paper.suppFile">Supplementary File</message>
+	<message key="paper.suppFileAbbrev">Supp. File</message>
 	<message key="paper.suppFiles">Supplementary File(s)</message>
 	<message key="paper.suppFilesAbbrev">Supp. files</message>
 	<message key="paper.discipline">Academic discipline and sub-disciplines</message>
