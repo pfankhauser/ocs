@@ -1514,11 +1514,16 @@ import('file.PaperFileManager');
 				}
 				$email->assignParams(array(
 					'conferenceDate' => strftime(Config::getVar('general', 'date_format_short'), $schedConf->getSetting('startDate')),
+					'conferenceStartDate' => strftime(Config::getVar('general', 'date_format_long'), $schedConf->getSetting('startDate')),
+					'conferenceEndDate' => strftime(Config::getVar('general', 'date_format_long'), $schedConf->getSetting('endDate')),
 					'authorName' => $authorUser->getFullName(),
 					'conferenceTitle' => $conference->getConferenceTitle(),
 					'editorialContactSignature' => $user->getContactSignature(),
 					'locationCity' => $schedConf->getSetting('locationCity'),
-					'paperTitle' => $trackDirectorSubmission->getLocalizedTitle()
+					'locationName' => $schedConf->getSetting('locationName'),
+					'paperTitle' => $trackDirectorSubmission->getLocalizedTitle(),
+					'trackTitle' => $trackDirectorSubmission->getTrackTitle(),
+					'paperId' => $trackDirectorSubmission->getPaperId()
 				));
 			} elseif (Request::getUserVar('importPeerReviews')) {
 				$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
