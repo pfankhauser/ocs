@@ -100,6 +100,12 @@
 	</tr>
 </table>
 {/if}
+
+<p>
+	<label for="feeCode">{translate key="schedConf.registration.feeCode"}</label>&nbsp;&nbsp;<input id="feeCode" name="feeCode" type="text" value="{$feeCode|escape}" class="textField" /><br />
+	{translate key="schedConf.registration.feeCode.description"}
+</p>
+
 </div>
 
 <div class="separator"></div>
