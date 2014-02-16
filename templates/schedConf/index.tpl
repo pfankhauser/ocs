@@ -32,8 +32,8 @@
 
 <h2>Important Dates</h2>
 <p>Abstract submission: {$schedConf->getSetting('submissionsOpenDate')|date_format:$dateFormatLong} &ndash; {$schedConf->getSetting('submissionsCloseDate')|date_format:$dateFormatLong}<br />
-Notification of acceptance: {$schedConf->getSetting('regAuthorOpenDate')|date_format:$dateFormatLong}<br />
-Registration: {$schedConf->getSetting('regAuthorOpenDate')|date_format:$dateFormatLong} &ndash; {$schedConf->getSetting('regAuthorCloseDate')|date_format:$dateFormatLong}</p>
+Notification of acceptance: March 14, 2014<br />
+Registration: March 14, 2014 &ndash; {$schedConf->getSetting('regAuthorCloseDate')|date_format:$dateFormatLong}</p>
 
 {if $enableAnnouncementsHomepage}
 	{* Display announcements *}
@@ -58,5 +58,25 @@ Registration: {$schedConf->getSetting('regAuthorOpenDate')|date_format:$dateForm
 {/foreach}
 
 {$additionalHomeContent}
+
+{if not (empty($sponsorNote) && empty($sponsors))}
+
+<h2>{translate key="about.sponsors"}</h2>
+
+{if $sponsorNote}<p>{$sponsorNote|nl2br}</p>{/if}
+
+<ul id="sponsors">
+	{foreach from=$sponsors item=sponsor}
+	{if $sponsor.institution}
+		{if $sponsor.url}
+			<li><a href="{$sponsor.url|escape}">{$sponsor.address|nl2br}</a></li>
+		{else}
+			<li>{$sponsor.address|nl2br}</li>
+		{/if}
+	{/if}
+	{/foreach}
+</ul>
+
+{/if}
 
 {include file="common/footer.tpl"}

@@ -63,6 +63,26 @@ class SchedConfHandler extends Handler {
 		$templateMgr->assign('homepageImage', $conference->getLocalizedSetting('homepageImage'));
 		$templateMgr->assign('homepageImageAltText', $conference->getLocalizedSetting('homepageImageAltText'));
 		$templateMgr->assign('helpTopicId', 'user.currentArchives');
+		
+				
+		$contributors = array();
+		$sponsors = array();
+
+		if($schedConf) {
+			$contributorNote = $schedConf->getLocalizedSetting('contributorNote');
+			$eventContributors = $schedConf->getSetting('contributors');
+			if (is_array($eventContributors)) $contributors = array_merge($contributors, $eventContributors);
+
+			$sponsorNote = $schedConf->getLocalizedSetting('sponsorNote');
+			$eventSponsors = $schedConf->getSetting('sponsors');
+			if (is_array($eventSponsors)) $sponsors = array_merge($sponsors, $eventSponsors);
+		}
+
+		$templateMgr->assign_by_ref('contributorNote', $contributorNote);
+		$templateMgr->assign_by_ref('contributors', $contributors);
+		$templateMgr->assign('sponsorNote', $sponsorNote);
+		$templateMgr->assign_by_ref('sponsors', $sponsors);
+		
 		$templateMgr->display('schedConf/index.tpl');
 
 	}

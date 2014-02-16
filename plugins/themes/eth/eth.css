@@ -134,6 +134,22 @@ div.separator {
 }
 
 /**
+ * Scheduled Conference Index
+ */
+
+ul#sponsors {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+ul#sponsors li {
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 20px;
+}
+ 
+
+/**
  * Schedule
  */
  
