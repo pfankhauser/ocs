@@ -21,6 +21,7 @@
 {/if}
 
 {if $acceptingSubmissions}
+	<p><strong><em>Remaining time until the submission deadline: {$countDown}.</em></strong></p>
 	<p>
 		{translate key="author.submit.startHere"}<br/>
 		<a href="{url page="author" op="submit" requiresAuthor=1}" class="action">{translate key="author.submit.startHereLink"}</a><br />

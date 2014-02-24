@@ -189,7 +189,7 @@ class SchedConfHandler extends Handler {
 
 		$submissionsOpenDate = $schedConf->getSetting('submissionsOpenDate');
 		$submissionsCloseDate = $schedConf->getSetting('submissionsCloseDate');
-
+		
 		if(!$submissionsOpenDate || !$submissionsCloseDate || time() < $submissionsOpenDate) {
 			// Too soon
 			$acceptingSubmissions = false;
@@ -200,6 +200,8 @@ class SchedConfHandler extends Handler {
 			$notAcceptingSubmissionsMessage = __('author.submit.submissionDeadlinePassed', array('closedDate' => strftime(Config::getVar('general', 'date_format_short'), $submissionsCloseDate)));
 		} else {
 			$acceptingSubmissions = true;
+			$countDown = $this->getFormattedCountDown($submissionsCloseDate - time());
+			$templateMgr->assign('countDown', $countDown);
 		}
 
 		$templateMgr->assign('acceptingSubmissions', $acceptingSubmissions);
@@ -598,6 +600,28 @@ class SchedConfHandler extends Handler {
 		}
 
 		return true;
+	}
+	
+	function getFormattedCountDown($durationInSeconds) {
+	  $duration = '';
+	  $days = floor($durationInSeconds / 86400);
+	  $durationInSeconds -= $days * 86400;
+	  $hours = floor($durationInSeconds / 3600);
+	  $durationInSeconds -= $hours * 3600;
+	  $minutes = floor($durationInSeconds / 60);
+	  $seconds = $durationInSeconds - $minutes * 60;
+	
+	  if($days > 0) {
+	    $duration .= $days . ' days';
+	  }
+	  if($hours > 0) {
+	    $duration .= ' ' . $hours . ' hours';
+	  }
+	  if($minutes > 0) {
+	    $duration .= ' ' . $minutes . ' minutes';
+	  }
+	
+	  return $duration;
 	}
 }
 
