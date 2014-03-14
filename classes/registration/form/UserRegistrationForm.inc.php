@@ -290,6 +290,23 @@ class UserRegistrationForm extends Form {
 		} else {
 			$paymentManager->displayPaymentForm($queuedPaymentId, $queuedPayment);
 		}
+		
+		import('mail.MailTemplate');
+      $user = &Request::getUser();
+      $registrantName = $user->getFullName();
+      $registrantEmail = $user->getEmail();
+      $contactName = $schedConf->getSetting('registrationName');
+      $contactEmail = $schedConf->getSetting('registrationEmail');
+      $mail = &new MailTemplate('REGISTRATION_CONFIRM');
+      $mail->setFrom($contactEmail, $contactName);
+      $mail->addRecipient($registrantEmail, $registrantName);
+      $mail->assignParams(array(
+         'registrantName' => $user->getFullName(),
+         'contactName' => $contactName,
+         'schedConfName' => $schedConf->getFullTitle(),
+         'itemDescription' => $queuedPayment->getDescription()
+      ));
+      $mail->send();
 
 		return REGISTRATION_SUCCESSFUL;
 	}

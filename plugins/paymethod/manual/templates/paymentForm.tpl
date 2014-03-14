@@ -32,6 +32,6 @@
 </table>
 <p>{$manualInstructions|nl2br}</p>
 
-<p><a href="{url page="payment" op="plugin" path="ManualPayment"|to_array:"notify":$queuedPaymentId|escape}" class="action">{translate key="plugins.paymethod.manual.sendNotificationOfPayment"}</a>
+<p><a href="{url page="user"}" class="action">{translate key="common.done"}</a>
 </div>
 {include file="common/footer.tpl"}
