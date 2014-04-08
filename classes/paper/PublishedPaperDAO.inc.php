@@ -223,7 +223,7 @@ class PublishedPaperDAO extends DAO {
 				AND pp.paper_id = p.paper_id
 				' . ($trackId?'AND p.track_id = ?' : ''). '
 				' . $searchSql . '
-			ORDER BY track_seq ASC, pa.seq ASC', $params
+			ORDER BY track_seq ASC, pp.last_name ASC', $params
 		);
 
 		$currTrackId = 0;
