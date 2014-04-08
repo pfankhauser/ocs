@@ -83,7 +83,7 @@
 	<message key="author.submit.noSubmissionFile">No submission file uploaded.</message>
 	<message key="author.submit.noSubmissionConfirm">Are you sure you wish to continue without uploading a submission file?</message>
 	<message key="author.submit.supplementaryFilesInstructions">This optional step allows Supplementary Files to be added to a submission. The files, which can be in any format, might include (a) research instruments, (b) data sets, which comply with the terms of the study's research ethics review, (c) sources that otherwise would be unavailable to readers, (d) figures and tables that cannot be integrated into the text itself, or other materials that add to the contribution of the work.</message>
-	<message key="author.submit.supplementaryFiles.saveToUpload">Click Save to upload file (after which additional files can be uploaded).</message>
+	<message key="author.submit.supplementaryFiles.saveToUpload">Max. 10 MB. Click Save to upload file (after which additional files can be uploaded).</message>
 	<message key="author.submit.forgottenSubmitSuppFile">Are you sure you wish to continue without uploading the supplementary file you have chosen?</message>
 	<message key="author.submit.noSupplementaryFiles">No supplementary files have been added to this submission.</message>
 	<message key="author.submit.backToSupplementaryFiles">Back to Supplementary Files</message>
