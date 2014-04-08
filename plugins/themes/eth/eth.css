@@ -148,7 +148,6 @@ ul#sponsors li {
 	margin-bottom: 20px;
 }
  
-
 /**
  * Schedule
  */
@@ -165,3 +164,28 @@ ul#sponsors li {
 #schedule li {
 	margin-top: 0.5em;
 }
+
+/**
+ * Presentations
+ */
+ 
+ table.presentation {
+	 margin-bottom: 10px;
+ }
+ 
+ td.presentationTitle {
+	 font-weight: bold;
+ }
+ 
+ td.presentationAuthors {
+	 font-style: italic;
+ }
+ 
+ td.presentationFiles a {
+	 margin-right: 15px;
+ }
+ 
+ div.separatorExtraSpace {
+	 margin-bottom: 10px;
+	 margin-top: 35px
+ }

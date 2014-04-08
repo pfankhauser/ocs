@@ -33,40 +33,43 @@
 	&nbsp;
 
 	{foreach name=tracks from=$publishedPapers item=track key=trackId}
-		{if $track.title}<h4>{$track.title|escape}</h4>{/if}
+		{if $track.title}<h2>{$track.title|escape}</h2>{/if}
 
 		{foreach from=$track.papers item=paper}
-			<table width="100%">
+			<table width="100%" class="presentation">
 			<tr valign="top">
-				<td width="75%">
-				{if !$mayViewPapers || $paper->getLocalizedAbstract() != ""}<a href="{url page="paper" op="view" path=$paper->getBestPaperId($currentConference)}">{$paper->getLocalizedTitle()|strip_unsafe_html}</a>{else}{$paper->getLocalizedTitle()|strip_unsafe_html}{/if}
-				</td>
-				<td align="right" width="25%">
-					{if $mayViewPapers && $paper->getStatus() == $smarty.const.STATUS_PUBLISHED}
-						{foreach from=$paper->getGalleys() item=galley name=galleyList}
-							<a href="{url page="paper" op="view" path=$paper->getBestPaperId($currentConference)|to_array:$galley->getId()}" class="file">{translate key="search.abstract"}</a>
-							{foreach from=$paper->getSuppFiles() item=suppFile key=key}
-								/ <a href="{url page="paper" op="downloadSuppFile" path=$paper->getPaperId()|to_array:$suppFile->getBestSuppFileId($currentConference)}" class="action">{translate key="paper.suppFileAbbrev"}</a>
-							{/foreach}
-						{/foreach}
-					{/if}
+				<td class="presentationTitle">
+					{assign var="galleys" value=$paper->getGalleys()}
+					{if $galleys && $mayViewPapers && $paper->getStatus() == $smarty.const.STATUS_PUBLISHED}<a href="{url page="paper" op="viewFile" path=$paper->getBestPaperId($currentConference)|to_array:$galleys[0]->getId()}">{$paper->getLocalizedTitle()|strip_unsafe_html}</a>
+					{else}{$paper->getLocalizedTitle()|strip_unsafe_html}{/if}
 				</td>
 			</tr>
 			<tr>
-				<td style="padding-left: 30px;font-style: italic;">
+				<td class="presentationAuthors">
 					{foreach from=$paper->getAuthors() item=author name=authorList}
 						{$author->getFullName()|escape}{if !$smarty.foreach.authorList.last},{/if}
 					{/foreach}
 				</td>
 				<td align="right">{$paper->getPages()|escape}</td>
 			</tr>
+			{**
+			<tr>
+				<td class="presentationFiles">
+					{if $mayViewPapers && $paper->getStatus() == $smarty.const.STATUS_PUBLISHED}
+						{foreach from=$paper->getSuppFiles() item=suppFile key=key}
+							<a href="{url page="paper" op="downloadSuppFile" path=$paper->getPaperId()|to_array:$suppFile->getBestSuppFileId($currentConference)}" class="action">{translate key="paper.suppFile"}</a>
+						{/foreach}
+					{/if}
+				</td>
+			</tr>
+			*}
 			</table>
 		{foreachelse}
 			{translate key="presentations.trackEmpty"}
 		{/foreach}
 
 		{if !$smarty.foreach.tracks.last}
-			<div class="separator"></div>
+			<div class="separator separatorExtraSpace"></div>
 		{/if}
 	{foreachelse}
 		<br />
