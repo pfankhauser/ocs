@@ -324,6 +324,7 @@ class TinyMCEPlugin extends GenericPlugin {
 					mode : "exact",
 					language : "' . String::substr(AppLocale::getLocale(), 0, 2) . '",
 					elements : "' . $enableFields . '",
+					extended_valid_elements : "iframe[src|width|height|name|align]",
 					relative_urls : false,
 					forced_root_block : false,
 					paste_auto_cleanup_on_paste : true,
