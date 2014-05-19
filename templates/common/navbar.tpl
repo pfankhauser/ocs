@@ -42,4 +42,6 @@
 			{/if}
 		{/foreach}
 	</ul>
+	
+	<a href="https://www.facebook.com/groups/586206954783578/" title="Join the Dynamic Walking Facebook Group" id="facebook"><img src="/ocs/public/conferences/1/facebook.gif" alt="Dynamic Walking Facebook Group" /></a>
 </div>
