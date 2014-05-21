@@ -52,7 +52,6 @@
 				</td>
 				<td align="right">{$paper->getPages()|escape}</td>
 			</tr>
-			{**
 			<tr>
 				<td class="presentationFiles">
 					{if $mayViewPapers && $paper->getStatus() == $smarty.const.STATUS_PUBLISHED}
@@ -62,7 +61,6 @@
 					{/if}
 				</td>
 			</tr>
-			*}
 			</table>
 		{foreachelse}
 			{translate key="presentations.trackEmpty"}
